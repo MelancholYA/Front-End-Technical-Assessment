@@ -1,0 +1,103 @@
+.event {
+  background-color: #fbfaff;
+  min-height: 100vh;
+  &_hero,
+  &_details,
+  &_data {
+    opacity: 0;
+    transform: translateY(-15px);
+    animation: popUp 0.7s forwards;
+  }
+  &_hero {
+    width: 100%;
+  }
+  &_details {
+    padding: 20px;
+    animation-delay: 0.5s;
+    &_name {
+      color: $blackPurple;
+    }
+    &_host {
+      color: $lightGrey;
+      font-weight: 300;
+      margin: 10px 0;
+      span {
+        font-weight: 700;
+      }
+    }
+  }
+  &_data {
+    position: relative;
+    display: flex;
+    margin: 10px 0;
+    padding: 0 20px;
+    align-items: center;
+    animation-delay: 1s;
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: calc(50% - 3px);
+      right: 15px;
+      transform: translateY(-50%) rotate(45deg);
+      height: 3px;
+      width: 10px;
+      background-color: $lightGrey;
+    }
+    &::after {
+      top: calc(50% + 3px);
+      transform: translateY(-50%) rotate(-45deg);
+    }
+    svg {
+      margin-right: 20px;
+      padding: 12px;
+      background: white;
+      height: 50px;
+      width: 50px;
+      box-shadow: 0 3px 14px gainsboro;
+      border-radius: 10px;
+      fill: $darkPurple;
+    }
+    &_texts {
+      h4 {
+        color: $blackPurple;
+      }
+      p {
+        font-size: 14px;
+        margin-top: 5px;
+        color: $lightGrey;
+        span {
+          font-weight: 700;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+  .event {
+    padding: 80px 180px;
+    font-size: 24px;
+  }
+}
+@media only screen and (min-width: 1224px) {
+  .event {
+    padding: 80px 180px;
+    font-size: 24px;
+    &_hero {
+      float: right;
+      width: 500px;
+      margin-left: 70px;
+    }
+    .left {
+      max-width: 500px;
+    }
+  }
+}
+
+@keyframes popUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

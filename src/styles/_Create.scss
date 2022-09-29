@@ -1,0 +1,83 @@
+.create {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  text-align: center;
+  z-index: 0;
+  background-size: cover;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background: linear-gradient(180deg, transparent, $bluePurple);
+  }
+  &_title {
+    margin: 20px;
+    color: $blackPurple;
+    opacity: 0;
+    transform: translateY(15px);
+    animation: popUp 0.7s forwards;
+  }
+
+  &_inputs {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 15px;
+    @for $i from 1 through 6 {
+      input:nth-child(#{$i}) {
+        animation-delay: $i * 0.5 + s;
+      }
+    }
+    input {
+      width: 100%;
+      margin: 12px;
+      padding: 12px;
+      box-shadow: 0 5px 10px #875aec57;
+      border-radius: 3px;
+      background-color: white;
+      opacity: 0;
+      transform: translateY(15px);
+      animation: popUp 0.7s forwards;
+      &::placeholder {
+        color: $lightGrey;
+      }
+    }
+
+    &_cta {
+      background: $blackPurple;
+      color: $lightPurple;
+      padding: 12px;
+      border-radius: 4px;
+      opacity: 0;
+      transform: translateY(15px);
+      margin: 20px auto;
+      min-width: 100px;
+      font-weight: 800;
+      animation: popUp 0.7s 3.5s forwards;
+    }
+  }
+}
+@media only screen and (min-width: 1224px) {
+  .create {
+    padding: 100px;
+    &_inputs {
+      input {
+        width: calc(50% - 24px);
+      }
+    }
+  }
+}
+
+@keyframes popUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
